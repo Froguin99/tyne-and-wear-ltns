@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LTN Plausibility Explorer</title>
+<link rel="stylesheet" href="lib/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="map" aria-label="Map of LTN plausibility scores"></div>
+
+<aside class="panel" id="panel">
+  <div class="panelhead">
+    <div class="eyebrow">LTN Plausibility Scores in:</div>
+    <button class="linkbtn" id="collapse" aria-expanded="true" aria-controls="panelBody">Hide key</button>
+  </div>
+  <div class="placewrap">
+    <select id="place" aria-label="Choose an area"></select>
+  </div>
+  <div id="panelBody">
+    <p class="intro">Each neighbourhood is scored 0&ndash;100 on how much its features indicate it is likely to be an LTN.
+      This is through measures of through-routes, modal filtering, and good permeability for cycling compared to driving.</p>
+
+    <section>
+      <h2><label class="tog"><input type="checkbox" data-layer="neighbourhoods" checked> LTN score</label></h2>
+      <div class="scale" id="scale"></div>
+      <div class="ends"><span>Less LTN-like</span><span>More LTN-like</span></div>
+    </section>
+
+    <section>
+      <h2>Modal filters
+        <span class="chips">
+          <label class="chip" id="chipPoints"><input type="checkbox" data-layer="filterPoints" checked> Points</label>
+          <label class="chip" id="chipLines"><input type="checkbox" data-layer="filterLines" checked> Lines</label>
+        </span>
+      </h2>
+      <div id="filterRows"></div>
+    </section>
+
+    <section>
+      <h2>Roads</h2>
+      <div id="roadRows"></div>
+    </section>
+
+    <div class="meta" id="meta"></div>
+  </div>
+</aside>
+
+<div class="loading" id="loading" hidden>Loading&hellip;</div>
+
+<script src="lib/leaflet.min.js"></script>
+<script src="config.js"></script>
+<script src="data/manifest.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
